@@ -45,7 +45,7 @@ export async function GET(req: Request, { params }: { params: { orderId?: string
 
     jwt.verify(token, process.env.JWT_SECRET);
 
-    if (params.orderId) {
+    if (params?.orderId !== undefined) {
       const order = await prismadb.orders.findUnique({
         where: {
           id: params.orderId

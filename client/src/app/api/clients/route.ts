@@ -56,7 +56,7 @@ export async function GET(req: Request, { params }: { params: { clientId?: strin
 
     jwt.verify(token, process.env.JWT_SECRET);
 
-    if (params.clientId) {
+    if (params?.clientId !== undefined) {
       const client = await prismadb.clients.findUnique({
         where: {
           id: params.clientId

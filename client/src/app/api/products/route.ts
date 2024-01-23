@@ -45,7 +45,7 @@ export async function GET(req: Request, { params }: { params: { productId?: stri
 
     jwt.verify(token, process.env.JWT_SECRET);
 
-    if (params.productId) {
+    if (params?.productId !== undefined) {
       const product = await prismadb.products.findUnique({
         where: {
           id: params.productId
