@@ -48,7 +48,7 @@ export default function FormLogin() {
       }
       localStorage.setItem('token', response.data.token)
       router.refresh();
-      router.push('/dashboard');
+      router.push('/clients');
     } catch (error: any) {
       if (toast.current) {
         toast.current.show({ severity: 'error', summary: 'Info', detail: `${translateErrors[error.response.data]}` });

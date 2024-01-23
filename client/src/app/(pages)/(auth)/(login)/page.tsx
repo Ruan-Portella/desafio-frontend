@@ -1,7 +1,7 @@
 'use client';
 
 import FormLogin from "./components/formLogin";
-import SignIn  from "../../../assets/signin";
+import SignIn  from "../../../../assets/signin";
 
 export default function Login() {
   return (
