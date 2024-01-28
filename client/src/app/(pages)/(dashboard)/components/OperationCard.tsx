@@ -4,16 +4,17 @@ import { useRouter } from 'next/navigation';
 
 interface OperationCardProps {
   id: string,
+  href: string,
   deleteFunction: (id: string) => void
 }
 
-export default function OperationCard({ id, deleteFunction }: OperationCardProps) {
+export default function OperationCard({ id, href, deleteFunction }: OperationCardProps) {
   const router = useRouter();
 
   return (
     <div className='flex justify-center'>
       <span
-        onClick={(e) => { e.stopPropagation(); router.push(`http://localhost:3000/clients/edit/${id}`) }}>
+        onClick={(e) => { e.stopPropagation(); router.push(`http://localhost:3000/${href}/edit/${id}`) }}>
           <EditIcon className={`hover:fill-gray-600 group-hover:stroke-[white] w-7 h-7 hover:scale-125`}/>
       </span>
       <span className='mx-2'>|</span>

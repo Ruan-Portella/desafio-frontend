@@ -1,13 +1,15 @@
 'use client';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import {useRouter} from 'next/navigation';
 import axios from 'axios';
 import OperationCard from '../components/OperationCard';
 import Table from '../components/Table';
+import { Toast } from 'primereact/toast';
 
 export default function Clients() {
   const [clients, setClients] = useState([]);
   const router = useRouter();
+  const toast = useRef<Toast>(null);
 
   const columns = [
     {field: 'name', header: 'Nome'},
@@ -25,6 +27,13 @@ export default function Clients() {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
           }
         });
+        if (toast.current) {
+          toast.current.show({ severity: 'success', summary: 'Info', detail: 'Cliente deleteado com sucesso!' });
+        }
+        router.refresh();
+        const newClients = clients.filter((client: any) => client.id !== id);
+        setClients(newClients);
+        router.push('/clients');
       } catch {
         router.push('/')
       }
@@ -45,7 +54,7 @@ export default function Clients() {
               month: '2-digit',
               year: '2-digit'
             }),
-            Operations: <OperationCard id={client.id} deleteFunction={deleteClient} />
+            Operations: <OperationCard id={client.id} href='clients' deleteFunction={deleteClient} />
           }
         });
         setClients(clients);
@@ -54,10 +63,11 @@ export default function Clients() {
       }
     }
     fetchClients();
-  }, [router]);
+  }, [router, clients]);
 
   return (
     <div>
+      <Toast ref={toast} />
       <h1 className='font-semibold text-[24px] text-black font-nunito leading-[32px] mb-4'>Clientes</h1>
       <Table columns={columns} data={clients} />
     </div>
