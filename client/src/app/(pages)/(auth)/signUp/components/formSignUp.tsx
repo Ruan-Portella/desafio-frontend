@@ -21,7 +21,8 @@ const formSchema = z.object({
 });
 
 const translateErrors: ErrorMessage = {
-  "Invalid password": "Senha inválida"
+  "Invalid password": "Senha inválida",
+  "User already exists": "Usuário já existe"
 }
 
 export default function FormSignUp() {
