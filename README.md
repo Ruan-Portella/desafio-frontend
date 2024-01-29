@@ -68,7 +68,7 @@ cd .. && cd mobile && npx expo start
 ### 6 - Acesse a aplicação
 
 `
-Pronto! Agora é só acessar o http://localhost:3000 e se divertir! Lembre-se de conectar o seu dispositivo móvel no expo para visualizar a aplicação mobile.
+Pronto! Agora é só acessar o http://localhost:3000 e se divertir! Lembre-se de conectar o android studio na expo para visualizar a aplicação mobile.
 `
 `
 
