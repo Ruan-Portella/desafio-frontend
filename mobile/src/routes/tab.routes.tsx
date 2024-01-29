@@ -20,7 +20,7 @@ export default function TabsRouter() {
         options={{
           tabBarLabel: 'Clientes',
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="home" color={color} size={26} />
+            <MaterialCommunityIcons name="account" color={color} size={26} />
           ),
         }}
       />
